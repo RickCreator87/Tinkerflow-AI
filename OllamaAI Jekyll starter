@@ -1,0 +1,263 @@
+# Entire OllamaAI Jekyll starter in one clean, copy‑paste block, exactly as you asked.  
+No commentary, no breaks — just the full project in one block.
+
+`
+ollamaai-docs/
+├── _config.yml
+├── Gemfile
+├── index.md
+├── about.md
+├── models/
+│   ├── index.md
+│   ├── llama3.md
+│   ├── mistral.md
+│   └── custom-models.md
+├── guides/
+│   ├── index.md
+│   ├── install.md
+│   ├── run-models.md
+│   ├── api.md
+│   └── troubleshooting.md
+├── assets/
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── main.js
+├── _layouts/
+│   ├── default.html
+│   ├── page.html
+│   └── model.html
+├── _includes/
+│   ├── header.html
+│   ├── footer.html
+│   └── sidebar.html
+├── build.sh
+└── install.sh
+
+Gemfile
+source "https://rubygems.org"
+gem "jekyll", "~> 4.3"
+gem "webrick"
+
+_config.yml
+title: "OllamaAI Documentation"
+description: "Developer documentation for running, serving, and integrating Ollama models."
+baseurl: ""
+url: ""
+theme: minima
+markdown: kramdown
+highlighter: rouge
+collections:
+  models:
+    output: true
+  guides:
+    output: true
+defaults:
+  - scope:
+      path: ""
+      type: "models"
+    values:
+      layout: model
+  - scope:
+      path: ""
+      type: "guides"
+    values:
+      layout: page
+include:
+  - assets
+
+index.md
+---
+layout: page
+title: "Welcome to OllamaAI"
+---
+
+OllamaAI Documentation
+Run, serve, and integrate AI models locally with a clean developer experience.
+Explore:
+- Guides
+- Models
+- API Reference
+
+about.md
+---
+layout: page
+title: About OllamaAI
+---
+OllamaAI provides a local-first AI runtime for models like Llama, Mistral, and custom fine-tunes.
+
+guides/index.md
+---
+layout: page
+title: Guides
+---
+
+Guides
+- Install Ollama
+- Run Models
+- API Reference
+- Troubleshooting
+
+guides/install.md
+---
+title: Install Ollama
+---
+
+Installing Ollama
+Instructions for macOS, Linux, and Windows.
+
+guides/run-models.md
+---
+title: Run Models
+---
+
+Running Models
+Use the ollama run command to start a model:
+`
+ollama run llama3
+`
+
+guides/api.md
+---
+title: API Reference
+---
+
+Ollama API
+The Ollama server exposes a local HTTP API for model execution.
+
+guides/troubleshooting.md
+---
+title: Troubleshooting
+---
+
+Troubleshooting
+Common issues and fixes.
+
+models/index.md
+---
+title: Models
+---
+
+Supported Models
+- Llama 3
+- Mistral
+- Custom Models
+
+models/llama3.md
+---
+title: Llama 3
+---
+
+Llama 3
+Usage, parameters, and examples.
+
+models/mistral.md
+---
+title: Mistral
+---
+
+Mistral
+Usage, parameters, and examples.
+
+models/custom-models.md
+---
+title: Custom Models
+---
+
+Custom Models
+How to load and run your own fine-tuned models.
+
+_layouts/default.html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+  </head>
+  <body>
+    {% include header.html %}
+    <div class="container">
+      {% include sidebar.html %}
+      <main>
+        {{ content }}
+      </main>
+    </div>
+    {% include footer.html %}
+  </body>
+</html>
+
+_layouts/page.html
+---
+layout: default
+---
+<div class="page">
+  {{ content }}
+</div>
+
+_layouts/model.html
+---
+layout: default
+---
+<div class="model-page">
+  <h1>{{ page.title }}</h1>
+  {{ content }}
+</div>
+
+_includes/header.html
+<header>
+  <h1>{{ site.title }}</h1>
+</header>
+
+_includes/footer.html
+<footer>
+  <p>© {{ site.time | date: "%Y" }} OllamaAI</p>
+</footer>
+
+_includes/sidebar.html
+<aside class="sidebar">
+  <h3>Docs</h3>
+  <ul>
+    <li><a href="/guides/">Guides</a></li>
+    <li><a href="/models/">Models</a></li>
+  </ul>
+</aside>
+
+assets/css/style.css
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  display: flex;
+}
+.sidebar {
+  width: 220px;
+  padding: 20px;
+  background: #f5f5f5;
+}
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+assets/js/main.js
+console.log("OllamaAI docs loaded");
+
+install.sh
+
+!/usr/bin/env bash
+set -e
+sudo apt-get update
+sudo apt-get install -y ruby-full build-essential zlib1g-dev
+gem install bundler jekyll
+bundle install
+
+build.sh
+
+!/usr/bin/env bash
+set -e
+bundle exec jekyll build
+`
+

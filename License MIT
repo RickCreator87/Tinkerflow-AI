@@ -1,0 +1,22 @@
+![License](https://img.shields.io/github/license/RickCreator87/aigateway-ollama)
+---
+
+### What this immediately fixes
+- Clear value proposition
+- 5-minute onboarding
+- Explicit OpenAI compatibility
+- Safer expectations for production use
+- A visible roadmap (huge trust signal)
+
+Next smart upgrades after this README:
+- Add a `/health` endpoint
+- Add streaming
+- Add tests + GitHub Actions
+
+When you’re ready, I can:
+- Write the `/health` endpoint
+- Add streaming support
+- Set up CI
+- Turn this into a multi-provider gateway (Ollama + OpenAI + others)
+
+This repo is already *working*. Now it **looks** like it knows where it’s going.

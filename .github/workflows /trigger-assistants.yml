@@ -1,0 +1,10 @@
+name: Trigger Assistants
+on:
+  issue_comment:
+  discussion_comment:
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Parse comment
+        run: node scripts/trigger-assistant.js

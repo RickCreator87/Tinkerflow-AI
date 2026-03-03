@@ -1,0 +1,10 @@
+curl http://localhost:8000/v1/chat/completions \
+  -H "Authorization: Bearer dev-key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "llama3",
+    "messages": [
+      { "role": "system", "content": "You are a helpful assistant." },
+      { "role": "user", "content": "Explain Ollama in one sentence." }
+    ]
+  }'
