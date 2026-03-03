@@ -1,0 +1,65 @@
+name: Release Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write   # Required for creating releases + tags
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up environment
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y jq
+
+      - name: Make scripts executable
+        run: |
+          chmod +x ./scripts/self-test.sh
+          chmod +x ./scripts/build.sh
+          chmod +x ./scripts/release.sh
+
+      - name: Run self-test
+        run: ./scripts/self-test.sh
+
+      - name: Run build
+        run: ./scripts/build.sh
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
+          git log -1 --pretty=format:"%h %s" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create tag
+        id: tag
+        run: |
+          VERSION="v$(date +'%Y.%m.%d.%H%M')"
+          git tag $VERSION
+          git push origin $VERSION
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.version }}
+          name: Release ${{ steps.tag.outputs.version }}
+          body: ${{ steps.changelog.outputs.CHANGELOG }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: ./dist
