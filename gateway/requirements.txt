@@ -1,0 +1,8 @@
+
+
+# gateway/requirements.txt
+
+
+fastapi
+uvicorn
+requests
