@@ -1,0 +1,6 @@
+# scripts/run.sh
+#!/bin/bash
+set -e
+
+echo "✅ Ollama self-test placeholder script running..."
+# Add real test logic here later
