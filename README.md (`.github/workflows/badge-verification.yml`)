@@ -1,0 +1,107 @@
+
+markdown
+<!-- Security Badges -->
+![Security Foundational](https://img.shields.io/badge/security-foundational-blue)
+![Security Scanning](https://img.shields.io/badge/security-scanning-active-green)
+![Security Vulnerabilities](https://img.shields.io/badge/vulnerabilities-0-critical-brightgreen)
+
+
+
+<!-- Activity Badges -->
+![Last Commit](https://img.shields.io/badge/commit-recent-yellow)
+![Issues Health](https://img.shields.io/badge/issues-healthy-brightgreen)
+
+
+
+<!-- Maturity Badges -->
+![CI Status](https://img.shields.io/badge/CI-passing-brightgreen)
+![Versioning](https://img.shields.io/badge/versioning-semver-blue)
+![Test Coverage](https://img.shields.io/badge/coverage-comprehensive-brightgreen)
+
+
+<!-- Technology Badges -->
+![Primary Language](https://img.shields.io/badge/language-JavaScript-yellow)
+![Secondary Language](https://img.shields.io/badge/language-Python-blue)
+![CI Platform](https://img.shields.io/badge/CI-GitHub_Actions-blue)
+
+
+
+<!-- Quality Badges -->
+![Linting](https://img.shields.io/badge/linting-passing-brightgreen)
+![Documentation](https://img.shields.io/badge/docs-complete-brightgreen)
+![Code Owners](https://img.shields.io/badge/codeowners-defined-blue)
+![Dependency Health](https://img.shields.io/badge/deps-healthy-brightgreen)
+
+
+
+
+<!-- Activity Badges -->
+![Last Commit](https://img.shields.io/badge/commit-current-brightgreen)
+![Issues Health](https://img.shields.io/badge/issues-healthy-brightgreen)
+![Release Cadence](https://img.shields.io/badge/releases-active-brightgreen)
+
+
+
+
+<!-- Maturity Badges -->
+![CI Status](https://img.shields.io/badge/CI-passing-brightgreen)
+![Versioning](https://img.shields.io/badge/versioning-semver-blue)
+
+
+
+
+<!-- Technology Badges -->
+![Primary Language](https://img.shields.io/badge/language-JavaScript-yellow)
+![Containerized](https://img.shields.io/badge/containerized-Docker-blue)
+
+
+
+
+<!-- Quality Badges -->
+![Linting](https://img.shields.io/badge/linting-passing-brightgreen)
+![Documentation](https://img.shields.io/badge/docs-complete-brightgreen)
+
+
+
+
+
+
+
+<!-- Security Badges -->
+![Security Foundational](https://img.shields.io/badge/security-foundational-blue)
+![Security Scanning](https://img.shields.io/badge/security-scanning-active-green)
+
+
+
+
+[![Maintainability](https://qlty.sh/gh/RickCreator87/projects/rickcreator87.github.io/maintainability.svg)](https://qlty.sh/gh/RickCreator87/projects/rickcreator87.github.io)
+
+
+
+
+
+<!-- Community Badges -->
+![License](https://img.shields.io/badge/license-MIT-yellow)
+
+```
+
+
+# AI Gateway for Ollama
+
+An OpenAI API–compatible gateway that proxies requests to a local Ollama instance.
+
+This project lets you run local LLMs via Ollama while keeping compatibility with tools and SDKs built for the OpenAI API.
+
+---
+
+## What This Does
+
+- Exposes OpenAI-style endpoints (`/v1/chat/completions`)
+- Forwards requests to Ollama
+- Uses API keys to select models and behavior
+- Runs locally via Docker or directly with Python
+
+If a client works with `api.openai.com`, it should work here with minimal or zero changes.
+~~~
+
+

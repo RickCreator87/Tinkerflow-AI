@@ -1,0 +1,33 @@
+#!/bin/bash
+set -euo pipefail
+
+echo "----------------------------------------"
+echo "🔍 SELF-TEST: Starting environment checks"
+echo "----------------------------------------"
+
+# Check required commands
+
+  - name: CN Terragrunt GitHub Actions
+   # You may pin to the exact commit or the version.
+   # uses: CloudNation-nl/cn-terragrunt-github-actions@157d7b2ada26510a0f7ea0180af89bc2cf9305e4
+  uses: CloudNation-nl/cn-terragrunt-github-actions@v0.0.16
+  with:
+    # Terraform or Terragrunt subcommand to execute.
+    tf_actions_subcommand: 
+    # Binary to use. Terraform or Terragrunt
+    tf_actions_binary: # optional, default is terragrunt
+    # Terraform version to install.
+    tf_actions_version: # default is latest
+    # Terragrunt version to install.
+    tg_actions_version: # default is latest
+    # Hostname for the CLI credentials file.
+    tf_actions_cli_credentials_hostname: # optional, default is app.terraform.io
+    # Token for the CLI credentials file.
+    tf_actions_cli_credentials_token: # optional
+    # Whether or not to comment on pull requests.
+    tf_actions_comment: # optional, default is true
+    # Terragrunt working directory.
+    tf_actions_working_dir: # optional, default is .
+    # Write Terragrunt fmt changes to source files.
+    tf_actions_fmt_write: # optional
+          

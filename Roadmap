@@ -1,0 +1,7 @@
+Planned improvements:
+Streaming responses (SSE)
+Embeddings endpoint
+Rate limiting per API key
+Structured logging
+Unit + integration tests
+Multi-provider routing (local + cloud)

@@ -1,0 +1,6 @@
+AIGateway-Ollama/
+├─ app/              # Gateway source code
+├─ docker-compose.yml
+├─ Dockerfile
+├─ .env.example
+├─ README.md

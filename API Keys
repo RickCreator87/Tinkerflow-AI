@@ -1,0 +1,23 @@
+# API Keys
+API keys are used to:
+Authenticate requests
+Optionally map users to models or behaviors
+For development, keys can be defined via environment variables.
+Important:
+This project is not intended to expose Ollama directly to the public internet without additional security.
+---
+## Configuration
+Environment variables are defined in .env.example.
+Typical options include:
+Ollama base URL
+Default model
+API key list or mapping
+Gateway port
+---
+## Error Handling
+The gateway attempts to normalize errors into OpenAI-style responses.
+Common error cases:
+Ollama not running
+Model not available
+Invalid request payload
+Unauthorized API key
