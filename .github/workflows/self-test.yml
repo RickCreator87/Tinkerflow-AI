@@ -1,0 +1,22 @@
+name: Ollama Self Test
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  self-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Make scripts executable
+        run: chmod +x scripts/*.sh
+
+      - name: Run Ollama stack entrypoint
+        run: |
+          echo "Starting Ollama self-test..."
+          ./scripts/run.sh
