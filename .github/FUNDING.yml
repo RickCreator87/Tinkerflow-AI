@@ -1,0 +1,17 @@
+.github/FUNDING.yml
+Create a `.github` folder in your repository and place this file inside it. This enables the "Sponsor" button on your GitHub repo.
+
+```yaml
+# These are supported funding model platforms
+
+github: [rickcreator87] # Replace with your GitHub username
+patreon: # Replace with your Patreon username
+open_collective: # Replace with your Open Collective username
+ko_fi: # Replace with your Ko-fi username
+tidelift: # Replace with your Tidelift subscription
+community_bridge: # Replace with your Community Bridge project
+liberapay: # Replace with your Liberapay username
+issuehunt: # Replace with your IssueHunt username
+otechie: # Replace with your Otechie username
+custom: ['https://buymeacoffee.com/rickcreator87'] # Add any custom URLs
+```
