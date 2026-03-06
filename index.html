@@ -1,519 +1,283 @@
-<!-- Add this to your index.html -->
-<div class="hero-section">
-    <h1 class="gradient-text">AI Gateway for Ollama</h1>
-    <p class="subtitle">Seamless integration, powerful management, and effortless scaling</p>
-    <div class="cta-buttons">
-        <a href="#features" class="btn-primary">Explore Features</a>
-        <a href="https://github.com/gitdigital-products/aigateway-ollama" class="btn-secondary">
-            <i class="github-icon"></i> View on GitHub
-        </a>
-    </div>
-</div>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIGateway-Ollama Dashboard</title>
+    <title>Tinkerflow-AI | Visual AI Programming Tutor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            line-height: 1.6;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        header {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .card h2 {
-            margin-top: 0;
-            color: #333;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-        input, select, textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-            font-family: monospace;
-        }
-        button {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        button:hover {
-            background: #0056b3;
-        }
-        .response-box {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 4px;
-            border: 1px solid #dee2e6;
-            margin-top: 10px;
-            font-family: monospace;
-            white-space: pre-wrap;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-        .status {
-            padding: 10px;
-            border-radius: 4px;
-            margin-bottom: 15px;
-        }
-        .status-healthy {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        .status-error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        .chat-history {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .message {
-            padding: 10px;
-            border-radius: 4px;
-        }
-        .message-user {
-            background: #e3f2fd;
-            align-self: flex-end;
-            text-align: right;
-        }
-        .message-assistant {
-            background: #f5f5f5;
-            align-self: flex-start;
-        }
-        .logs {
-            font-family: monospace;
-            font-size: 12px;
-            background: #2d2d2d;
-            color: #fff;
-            padding: 15px;
-            border-radius: 4px;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        .flex-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        @media (max-width: 768px) {
-            .flex-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Gradient pulse for the Hero button */
+    .pulse-blue {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+        70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+    }
+</style>
+
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>🚀 AIGateway-Ollama Dashboard</h1>
-            <p>An OpenAI API-compatible gateway for local Ollama LLMs</p>
-            <div id="status" class="status">Checking gateway status...</div>
-        </header>
+<body class="bg-slate-50 text-slate-900 font-sans">
 
-        <div class="flex-grid">
-            <div class="card">
-                <h2>📡 Gateway Configuration</h2>
-                <div class="form-group">
-                    <label for="gatewayUrl">Gateway URL:</label>
-                    <input type="text" id="gatewayUrl" value="http://localhost:5000" placeholder="http://localhost:5000">
-                </div>
-                <div class="form-group">
-                    <label for="apiKey">API Key:</label>
-                    <input type="text" id="apiKey" placeholder="Your API key (from .env file)">
-                </div>
-                <div class="form-group">
-                    <label for="model">Model:</label>
-                    <select id="model">
-                        <option value="llama2">llama2</option>
-                        <option value="mistral">mistral</option>
-                        <option value="codellama">codellama</option>
-                        <option value="phi">phi</option>
-                        <option value="custom">Custom model</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="customModel" style="display:none">Custom Model Name:</label>
-                    <input type="text" id="customModel" placeholder="e.g., my-custom-model" style="display:none">
-                </div>
-                <button onclick="updateConfig()">Update Configuration</button>
-                <button onclick="testConnection()" style="background:#6c757d; margin-left:10px;">Test Connection</button>
+    <nav class="flex items-center justify-between px-8 py-6 bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200">
+        <div class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white shadow-lg">
+                <i class="fas fa-brain"></i>
             </div>
+            <span class="text-xl font-bold tracking-tight">Tinkerflow<span class="text-blue-600">-AI</span></span>
+        </div>
+        <div class="hidden md:flex gap-8 font-medium text-slate-600">
+            <a href="#features" class="hover:text-blue-600 transition">Features</a>
+            <a href="#docs" class="hover:text-blue-600 transition">Docs</a>
+            <a href="#pricing" class="hover:text-blue-600 transition">Marketplace</a>
+        </div>
+        <a href="https://github.com/RickCreator87/Tinkerflow-AI" class="bg-slate-900 text-white px-5 py-2.5 rounded-full font-semibold hover:bg-slate-800 transition shadow-md">
+            <i class="fab fa-github mr-2"></i>Star on GitHub
+        </a>
+    </nav>
 
-            <div class="card">
-                <h2>⚙️ Quick Actions</h2>
-                <p>Common gateway operations:</p>
-                <button onclick="checkHealth()" style="background:#28a745; width:100%; margin-bottom:10px;">Check Health Status</button>
-                <button onclick="listModels()" style="background:#17a2b8; width:100%; margin-bottom:10px;">List Available Models</button>
-                <button onclick="viewMetrics()" style="background:#6c757d; width:100%; margin-bottom:10px;">View Metrics</button>
-                <hr>
-                <h3>System Information</h3>
-                <div id="sysInfo" style="font-size:12px; color:#666;">
-                    • Gateway: OpenAI-compatible API proxy<br>
-                    • Backend: Local Ollama instance<br>
-                    • Endpoint: /v1/chat/completions<br>
-                    • Rate limiting: Configurable per API key<br>
-                    • Container: Docker/Python support
+    <header class="max-w-7xl mx-auto px-8 py-20 text-center">
+        <span class="bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider">v1.0.0 Pre-release is live</span>
+        <h1 class="text-5xl md:text-7xl font-extrabold mt-6 mb-8 tracking-tight">
+            AI Programming. <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">No Syntax Required.</span>
+        </h1>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-10">
+            Tinkerflow-AI is an offline-first, visual logic engine designed to teach the world how to build with AI—anywhere, anytime.
+        </p>
+        <div class="flex flex-col md:flex-row justify-center gap-4">
+            <button class="bg-blue-600 text-white px-8 py-4 rounded-2xl text-lg font-bold hover:scale-105 transition-transform shadow-xl shadow-blue-200">
+                Launch Web Editor
+            </button>
+            <button class="bg-white border-2 border-slate-200 px-8 py-4 rounded-2xl text-lg font-bold hover:bg-slate-50 transition shadow-sm">
+                Download Desktop App
+            </button>
+        </div>
+    </header>
+
+    <section id="features" class="max-w-7xl mx-auto px-8 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="md:col-span-2 bg-white p-10 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Visual Node Engine</h3>
+                    <p class="text-slate-500">Connect blocks to build logic. From simple "If-Then" statements to complex AI prompt chains.</p>
+                </div>
+                <div class="mt-8 bg-slate-100 h-48 rounded-xl border-2 border-dashed border-slate-300 flex items-center justify-center italic text-slate-400">
+                    [ Interactive Flow Canvas Preview ]
+                </div>
+            </div>
+            <div class="bg-indigo-600 p-10 rounded-3xl text-white shadow-xl flex flex-col justify-between">
+                <i class="fas fa-wifi-slash text-4xl mb-6"></i>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Offline First</h3>
+                    <p class="text-indigo-100 opacity-80">Zero internet? No problem. All logic and local models run directly on your hardware.</p>
+                </div>
+            </div>
+            <div class="bg-white p-10 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                <i class="fas fa-user-shield text-4xl text-blue-600 mb-6"></i>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Privacy Core</h3>
+                    <p class="text-slate-500">Your data never leaves your device. Perfect for high-security environments and private tinkering.</p>
+                </div>
+            </div>
+            <div class="md:col-span-2 bg-slate-900 p-10 rounded-3xl text-white flex flex-col md:flex-row items-center gap-8">
+                <div class="flex-1 text-center md:text-left">
+                    <h3 class="text-2xl font-bold mb-4">Meet your AI Tutor</h3>
+                    <p class="text-slate-400">The built-in tutor explains every node connection, helping you learn computer science principles as you build.</p>
+                </div>
+                <div class="w-full md:w-1/3 bg-slate-800 p-4 rounded-2xl border border-slate-700">
+                    <div class="text-xs text-blue-400 mb-2">Tutor Agent:</div>
+                    <div class="text-sm">"This block connects your text input to the LLM. It's like sending a letter to a brain!"</div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h2>💬 Chat Interface</h2>
-            <div id="chatContainer" class="chat-history">
-                <div class="message message-assistant">
-                    <strong>Assistant:</strong> Hello! I'm your local AI assistant. Send a message to start chatting.
+    <footer class="border-t border-slate-200 py-12 text-center">
+        <p class="text-slate-500">Built with ❤️ by <a href="https://github.com/RickCreator87" class="font-bold text-slate-900">RickCreator87</a></p>
+    </footer>
+<script>
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 150;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+
+    window.addEventListener("scroll", reveal);
+    // To check the scroll position on page load
+    reveal();
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tinkerflow-AI | Visual AI Programming Tutor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Gradient pulse for the Hero button */
+    .pulse-blue {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+        70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+    }
+</style>
+
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans">
+
+    <nav class="flex items-center justify-between px-8 py-6 bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200">
+        <div class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white shadow-lg">
+                <i class="fas fa-brain"></i>
+            </div>
+            <span class="text-xl font-bold tracking-tight">Tinkerflow<span class="text-blue-600">-AI</span></span>
+        </div>
+        <div class="hidden md:flex gap-8 font-medium text-slate-600">
+            <a href="#features" class="hover:text-blue-600 transition">Features</a>
+            <a href="#docs" class="hover:text-blue-600 transition">Docs</a>
+            <a href="#pricing" class="hover:text-blue-600 transition">Marketplace</a>
+        </div>
+        <a href="https://github.com/RickCreator87/Tinkerflow-AI" class="bg-slate-900 text-white px-5 py-2.5 rounded-full font-semibold hover:bg-slate-800 transition shadow-md">
+            <i class="fab fa-github mr-2"></i>Star on GitHub
+        </a>
+    </nav>
+
+    <header class="max-w-7xl mx-auto px-8 py-20 text-center">
+        <span class="bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider">v1.0.0 Pre-release is live</span>
+        <h1 class="text-5xl md:text-7xl font-extrabold mt-6 mb-8 tracking-tight">
+            AI Programming. <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">No Syntax Required.</span>
+        </h1>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-10">
+            Tinkerflow-AI is an offline-first, visual logic engine designed to teach the world how to build with AI—anywhere, anytime.
+        </p>
+        <div class="flex flex-col md:flex-row justify-center gap-4">
+            <button class="bg-blue-600 text-white px-8 py-4 rounded-2xl text-lg font-bold hover:scale-105 transition-transform shadow-xl shadow-blue-200">
+                Launch Web Editor
+            </button>
+            <button class="bg-white border-2 border-slate-200 px-8 py-4 rounded-2xl text-lg font-bold hover:bg-slate-50 transition shadow-sm">
+                Download Desktop App
+            </button>
+        </div>
+    </header>
+
+    <section id="features" class="max-w-7xl mx-auto px-8 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="md:col-span-2 bg-white p-10 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Visual Node Engine</h3>
+                    <p class="text-slate-500">Connect blocks to build logic. From simple "If-Then" statements to complex AI prompt chains.</p>
+                </div>
+                <div class="mt-8 bg-slate-100 h-48 rounded-xl border-2 border-dashed border-slate-300 flex items-center justify-center italic text-slate-400">
+                    [ Interactive Flow Canvas Preview ]
                 </div>
             </div>
-            <div class="form-group">
-                <label for="message">Your Message:</label>
-                <textarea id="message" placeholder="Type your message here..."></textarea>
+            <div class="bg-indigo-600 p-10 rounded-3xl text-white shadow-xl flex flex-col justify-between">
+                <i class="fas fa-wifi-slash text-4xl mb-6"></i>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Offline First</h3>
+                    <p class="text-indigo-100 opacity-80">Zero internet? No problem. All logic and local models run directly on your hardware.</p>
+                </div>
             </div>
-            <button onclick="sendMessage()">Send Message</button>
-            <button onclick="clearChat()" style="background:#dc3545; margin-left:10px;">Clear Chat</button>
-            
-            <div style="margin-top:20px;">
-                <label>Advanced Options:</label>
-                <div style="display:flex; gap:10px; margin-top:10px;">
-                    <div style="flex:1;">
-                        <label for="maxTokens" style="font-size:12px;">Max Tokens:</label>
-                        <input type="number" id="maxTokens" value="500" min="1" max="4000">
-                    </div>
-                    <div style="flex:1;">
-                        <label for="temperature" style="font-size:12px;">Temperature:</label>
-                        <input type="number" id="temperature" value="0.7" min="0" max="2" step="0.1">
-                    </div>
+            <div class="bg-white p-10 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                <i class="fas fa-user-shield text-4xl text-blue-600 mb-6"></i>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Privacy Core</h3>
+                    <p class="text-slate-500">Your data never leaves your device. Perfect for high-security environments and private tinkering.</p>
+                </div>
+            </div>
+            <div class="md:col-span-2 bg-slate-900 p-10 rounded-3xl text-white flex flex-col md:flex-row items-center gap-8">
+                <div class="flex-1 text-center md:text-left">
+                    <h3 class="text-2xl font-bold mb-4">Meet your AI Tutor</h3>
+                    <p class="text-slate-400">The built-in tutor explains every node connection, helping you learn computer science principles as you build.</p>
+                </div>
+                <div class="w-full md:w-1/3 bg-slate-800 p-4 rounded-2xl border border-slate-700">
+                    <div class="text-xs text-blue-400 mb-2">Tutor Agent:</div>
+                    <div class="text-sm">"This block connects your text input to the LLM. It's like sending a letter to a brain!"</div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h2>📊 Response & Logs</h2>
-            <div class="response-box" id="response">
-                {/* Response will appear here */}
-            </div>
-            <h3 style="margin-top:20px;">Activity Log:</h3>
-            <div class="logs" id="logs">
-                {/* Logs will appear here */}
-                [System] Dashboard loaded at {new Date().toLocaleTimeString()}
-                [Info] Configure your gateway URL and API key above
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>📚 Project Information</h2>
-            <p>This dashboard interfaces with the <strong>AIGateway-Ollama</strong> project:</p>
-            <ul>
-                <li><strong>Purpose:</strong> OpenAI API-compatible gateway for local Ollama LLMs</li>
-                <li><strong>Endpoint:</strong> /v1/chat/completions (OpenAI compatible)</li>
-                <li><strong>Setup:</strong> Runs locally via Docker or Python</li>
-                <li><strong>Features:</strong> API key management, rate limiting, metrics</li>
-            </ul>
-            <p><strong>Prerequisites:</strong> Make sure your gateway is running at the URL specified above.</p>
-        </div>
-    </div>
-
-    <script>
-        // DOM elements
-        const modelSelect = document.getElementById('model');
-        const customModelInput = document.getElementById('customModel');
-        const customModelLabel = document.querySelector('label[for="customModel"]');
-        
-        // Toggle custom model input
-        modelSelect.addEventListener('change', function() {
-            if (this.value === 'custom') {
-                customModelLabel.style.display = 'block';
-                customModelInput.style.display = 'block';
-            } else {
-                customModelLabel.style.display = 'none';
-                customModelInput.style.display = 'none';
-            }
-        });
-
-        // Configuration object
-        let config = {
-            gatewayUrl: 'http://localhost:5000',
-            apiKey: '',
-            model: 'llama2'
-        };
-
-        // Initialize from localStorage
-        function loadConfig() {
-            const saved = localStorage.getItem('aigateway-config');
-            if (saved) {
-                config = JSON.parse(saved);
-                document.getElementById('gatewayUrl').value = config.gatewayUrl;
-                document.getElementById('apiKey').value = config.apiKey;
-                document.getElementById('model').value = config.model;
+    <footer class="border-t border-slate-200 py-12 text-center">
+        <p class="text-slate-500">Built with ❤️ by <a href="https://github.com/RickCreator87" class="font-bold text-slate-900">RickCreator87</a></p>
+    </footer>
+<script>
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 150;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
             }
         }
+    }
 
-        // Save configuration
-        function updateConfig() {
-            config.gatewayUrl = document.getElementById('gatewayUrl').value;
-            config.apiKey = document.getElementById('apiKey').value;
-            config.model = modelSelect.value === 'custom' 
-                ? document.getElementById('customModel').value 
-                : document.getElementById('model').value;
-            
-            localStorage.setItem('aigateway-config', JSON.stringify(config));
-            addLog('Configuration updated');
-            
-            // Check health after config update
-            checkHealth();
-        }
+    window.addEventListener("scroll", reveal);
+    // To check the scroll position on page load
+    reveal();
+</script>
 
-        // Add log message
-        function addLog(message) {
-            const logs = document.getElementById('logs');
-            const timestamp = new Date().toLocaleTimeString();
-            logs.innerHTML = `[${timestamp}] ${message}\n` + logs.innerHTML;
-        }
-
-        // Check gateway health
-        async function checkHealth() {
-            const statusDiv = document.getElementById('status');
-            
-            try {
-                const response = await fetch(`${config.gatewayUrl}/health`);
-                if (response.ok) {
-                    const data = await response.json();
-                    statusDiv.className = 'status status-healthy';
-                    statusDiv.innerHTML = `✅ Gateway is healthy | Status: ${data.status || 'ok'} | Uptime: ${data.uptime || 'N/A'}`;
-                    addLog('Health check: Gateway is healthy');
-                } else {
-                    statusDiv.className = 'status status-error';
-                    statusDiv.innerHTML = `⚠️ Gateway responded with status: ${response.status}`;
-                    addLog(`Health check failed: HTTP ${response.status}`);
-                }
-            } catch (error) {
-                statusDiv.className = 'status status-error';
-                statusDiv.innerHTML = '❌ Cannot connect to gateway. Make sure it\'s running at ' + config.gatewayUrl;
-                addLog(`Connection error: ${error.message}`);
-            }
-        }
-
-        // Test connection
-        async function testConnection() {
-            addLog('Testing connection to gateway...');
-            
-            try {
-                const response = await fetch(config.gatewayUrl, {
-                    method: 'HEAD',
-                    mode: 'no-cors'
-                });
-                
-                addLog('Connection test completed');
-                alert('Connection test completed. Check the logs for details.');
-            } catch (error) {
-                addLog(`Connection test failed: ${error.message}`);
-                alert('Connection failed. Check console and logs.');
-            }
-        }
-
-        // List available models
-        async function listModels() {
-            try {
-                const response = await fetch(`${config.gatewayUrl}/v1/models`, {
-                    headers: {
-                        'Authorization': `Bearer ${config.apiKey}`
-                    }
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    document.getElementById('response').textContent = JSON.stringify(data, null, 2);
-                    addLog('Fetched available models');
-                } else {
-                    document.getElementById('response').textContent = `Error: ${response.status}`;
-                    addLog(`Failed to fetch models: HTTP ${response.status}`);
-                }
-            } catch (error) {
-                document.getElementById('response').textContent = `Error: ${error.message}`;
-                addLog(`Error fetching models: ${error.message}`);
-            }
-        }
-
-        // View metrics
-        async function viewMetrics() {
-            try {
-                const response = await fetch(`${config.gatewayUrl}/metrics`);
-                
-                if (response.ok) {
-                    const text = await response.text();
-                    document.getElementById('response').textContent = text;
-                    addLog('Fetched gateway metrics');
-                } else {
-                    document.getElementById('response').textContent = `Error: ${response.status}`;
-                    addLog(`Failed to fetch metrics: HTTP ${response.status}`);
-                }
-            } catch (error) {
-                document.getElementById('response').textContent = `Error: ${error.message`;
-                addLog(`Error fetching metrics: ${error.message}`);
-            }
-        }
-
-        // Send chat message
-        async function sendMessage() {
-            const message = document.getElementById('message').value;
-            const maxTokens = document.getElementById('maxTokens').value;
-            const temperature = document.getElementById('temperature').value;
-            
-            if (!message.trim()) {
-                alert('Please enter a message');
-                return;
-            }
-            
-            // Add user message to chat
-            const chatContainer = document.getElementById('chatContainer');
-            const userMessage = document.createElement('div');
-            userMessage.className = 'message message-user';
-            userMessage.innerHTML = `<strong>You:</strong> ${message}`;
-            chatContainer.appendChild(userMessage);
-            
-            // Clear input
-            document.getElementById('message').value = '';
-            
-            addLog(`Sending message: "${message.substring(0, 50)}${message.length > 50 ? '...' : ''}"`);
-            
-            // Prepare request
-            const requestBody = {
-                model: config.model,
-                messages: [
-                    {
-                        role: "user",
-                        content: message
-                    }
-                ],
-                max_tokens: parseInt(maxTokens),
-                temperature: parseFloat(temperature)
-            };
-            
-            // Show loading indicator
-            const loadingMsg = document.createElement('div');
-            loadingMsg.className = 'message message-assistant';
-            loadingMsg.innerHTML = '<strong>Assistant:</strong> Thinking...';
-            chatContainer.appendChild(loadingMsg);
-            
-            try {
-                const response = await fetch(`${config.gatewayUrl}/v1/chat/completions`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${config.apiKey}`
-                    },
-                    body: JSON.stringify(requestBody)
-                });
-                
-                // Remove loading indicator
-                chatContainer.removeChild(loadingMsg);
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    const assistantMessage = document.createElement('div');
-                    assistantMessage.className = 'message message-assistant';
-                    
-                    if (data.choices && data.choices[0] && data.choices[0].message) {
-                        const content = data.choices[0].message.content;
-                        assistantMessage.innerHTML = `<strong>Assistant:</strong> ${content}`;
-                        
-                        // Show full response in response box
-                        document.getElementById('response').textContent = JSON.stringify(data, null, 2);
-                        addLog(`Received response (${data.usage?.total_tokens || '?'} tokens)`);
-                    } else {
-                        assistantMessage.innerHTML = '<strong>Assistant:</strong> Received unexpected response format';
-                        document.getElementById('response').textContent = JSON.stringify(data, null, 2);
-                        addLog('Received unexpected response format');
-                    }
-                    
-                    chatContainer.appendChild(assistantMessage);
-                } else {
-                    const errorMsg = document.createElement('div');
-                    errorMsg.className = 'message message-assistant';
-                    errorMsg.innerHTML = `<strong>Assistant:</strong> Error (HTTP ${response.status})`;
-                    chatContainer.appendChild(errorMsg);
-                    
-                    document.getElementById('response').textContent = `Error: ${response.status}`;
-                    addLog(`Request failed: HTTP ${response.status}`);
-                }
-            } catch (error) {
-                // Remove loading indicator
-                if (chatContainer.contains(loadingMsg)) {
-                    chatContainer.removeChild(loadingMsg);
-                }
-                
-                const errorMsg = document.createElement('div');
-                errorMsg.className = 'message message-assistant';
-                errorMsg.innerHTML = `<strong>Assistant:</strong> Connection error`;
-                chatContainer.appendChild(errorMsg);
-                
-                document.getElementById('response').textContent = `Error: ${error.message}`;
-                addLog(`Request failed: ${error.message}`);
-            }
-            
-            // Scroll to bottom of chat
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-        }
-
-        // Clear chat history
-        function clearChat() {
-            const chatContainer = document.getElementById('chatContainer');
-            chatContainer.innerHTML = `
-                <div class="message message-assistant">
-                    <strong>Assistant:</strong> Hello! I'm your local AI assistant. Send a message to start chatting.
-                </div>
-            `;
-            document.getElementById('response').textContent = '';
-            addLog('Chat history cleared');
-        }
-
-        // Initialize on load
-        document.addEventListener('DOMContentLoaded', function() {
-            loadConfig();
-            checkHealth();
-            addLog('Dashboard initialized');
-        });
-    </script>
 </body>
 </html>
