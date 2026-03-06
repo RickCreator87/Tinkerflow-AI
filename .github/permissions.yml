@@ -1,0 +1,6 @@
+# GitHub App permission map
+checks: write
+contents: read
+metadata: read
+pull_requests: write
+issues: read
