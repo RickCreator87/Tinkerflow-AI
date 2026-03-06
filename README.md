@@ -1,4 +1,4 @@
-
+[![Deploy static content to Pages](https://github.com/RickCreator87/Tinkerflow-AI/actions/workflows/static.yml/badge.svg)](https://github.com/RickCreator87/Tinkerflow-AI/actions/workflows/static.yml)
 ## 🔖 Authority Badges
 
 ### 🧱 Tinkerflow‑AI — App Authority
