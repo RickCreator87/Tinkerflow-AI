@@ -1,0 +1,12 @@
+{
+  "E001": "Invalid configuration: missing required field",
+  "E002": "GitHub API error: rate limit exceeded",
+  "E003": "Provider unavailable: connection refused",
+  "E004": "Governance proof generation failed",
+  "E005": "Governance proof verification failed",
+  "E006": "Policy evaluation error: invalid pattern",
+  "E007": "Webhook signature verification failed",
+  "E008": "Installation not found",
+  "E009": "Permission denied: insufficient scope",
+  "E010": "Internal server error"
+}
