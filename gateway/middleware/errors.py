@@ -12,7 +12,7 @@ async def unified_error_handler(request: Request, call_next):
     except Exception as exc:
         logger.exception("Unhandled exception")
         error_code = getattr(exc, 'error_code', 'E010')
-        message = get_error_message(error_code) or str(exc)
+        message = get_error_message(error_code) or "An internal error has occurred."
         return JSONResponse(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             content={"error": error_code, "message": message}
