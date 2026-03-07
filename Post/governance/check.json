@@ -1,0 +1,14 @@
+## Endpoints
+
+### POST /governance/check
+
+Trigger a governance check on a pull request.
+
+**Request Body**
+
+```json
+{
+  "repo": "owner/repo",
+  "pull_number": 123,
+  "installation_id": 456
+}
