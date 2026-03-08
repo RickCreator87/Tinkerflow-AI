@@ -9,6 +9,19 @@
 ![tinkerflow.repo.auditready](https://img.shields.io/badge/tinkerflow.repo.auditready-Audit--Ready%20Repo-4c1)
 ![tinkerflow.security.integrity](https://img.shields.io/badge/tinkerflow.security.integrity-Integrity--Checked%20Actions-e05d44)
 
+https://www.buymeacoffee.com/rickcreator87
+`markdown
+![Buy Me a Coffee](https://www.buymeacoffee.com/rickcreator87)
+`
+
+⚙️ 
+Paste this:
+
+`yaml
+github: RickCreator87
+buymea_coffee: rickcreator87
+custom: []
+`
 ### 🛡️ Governing Authority — GitDigital Badge Authority
 ![gda.authority.badge](https://img.shields.io/badge/gda.authority.badge-Primary%20Badge%20Authority-000000)
 ![gda.governance.schema](https://img.shields.io/badge/gda.governance.schema-Schema%20Compliance-0366d6)
