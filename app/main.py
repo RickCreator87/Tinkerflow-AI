@@ -157,7 +157,10 @@ async def chat_completions(
     # Parse request body
     try:
         request_data = await request.json()
-        logger.info(f"Chat completion request: {request_data}")
+        # Log a sanitized summary of the request instead of the full, user-controlled body
+        model_for_log = str(request_data.get("model", "unknown")).replace("\r", "").replace("\n", "")
+        messages_count = len(request_data.get("messages", [])) if isinstance(request_data.get("messages"), list) else 0
+        logger.info(f"Chat completion request - model={model_for_log}, messages={messages_count}")
     except Exception as e:
         logger.error(f"Failed to parse request JSON: {e}")
         raise HTTPException(status_code=400, detail="Invalid JSON payload")
