@@ -1,7 +1,10 @@
+
 [![Deploy static content to Pages](https://github.com/RickCreator87/Tinkerflow-AI/actions/workflows/static.yml/badge.svg)](https://github.com/RickCreator87/Tinkerflow-AI/actions/workflows/static.yml)
+
 ## 🔖 Authority Badges
 
 ### 🧱 Tinkerflow‑AI — App Authority
+
 ![tinkerflow.identity.agent](https://img.shields.io/badge/tinkerflow.identity.agent-Registered%20Adaptive%20Agent-6f3ad3)
 ![tinkerflow.autonomy.plan](https://img.shields.io/badge/tinkerflow.autonomy.plan-Multi--Step%20Planning%20Engine-3a8dde)
 ![tinkerflow.workflow.orchestrator](https://img.shields.io/badge/tinkerflow.workflow.orchestrator-Workflow%20Orchestration%20Engine-2ea043)
