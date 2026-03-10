@@ -1,0 +1,19 @@
+{
+  "github": {
+    "app_id": 123456,
+    "webhook_secret": "CHANGE_ME_IN_PRODUCTION",
+    "client_id": "Iv1.xxxxxxxxxxxx",
+    "client_secret": "CHANGE_ME_IN_PRODUCTION",
+    "private_key_path": "/path/to/private-key.pem",
+    "installation_retrieval_mode": "jwt"
+  },
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8080,
+    "workers": 4
+  },
+  "webhook": {
+    "path": "/webhooks/github",
+    "concurrency": 10
+  }
+}

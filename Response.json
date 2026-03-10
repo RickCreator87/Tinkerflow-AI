@@ -1,0 +1,12 @@
+{
+  "request_id": "abc-123",
+  "results": [
+    {
+      "policy_name": "no_secrets",
+      "passed": true,
+      "severity": "error"
+    }
+  ],
+  "overall_pass": true,
+  "summary": "All checks passed"
+}

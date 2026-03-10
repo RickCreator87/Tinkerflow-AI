@@ -1,0 +1,21 @@
+{
+  "name": "Tinkerflow-AI",
+  "url": "https://github.com/apps/tinkerflow-ai",
+  "hook_attributes": {
+    "url": "https://api.tinkerflow.ai/webhooks/github"
+  },
+  "redirect_url": "https://tinkerflow.ai/app/setup",
+  "public": true,
+  "default_permissions": {
+    "checks": "write",
+    "contents": "read",
+    "metadata": "read",
+    "pull_requests": "write"
+  },
+  "default_events": [
+    "pull_request",
+    "pull_request_review",
+    "check_run",
+    "check_suite"
+  ]
+}

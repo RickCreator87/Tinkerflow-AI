@@ -1,0 +1,36 @@
+{
+  "policies": [
+    {
+      "name": "no_secrets",
+      "description": "Check for hardcoded secrets in diff",
+      "enabled": true,
+      "severity": "error",
+      "params": {
+        "patterns": [
+          "api[_-]?key",
+          "secret",
+          "token",
+          "password"
+        ]
+      }
+    },
+    {
+      "name": "license_header",
+      "description": "Ensure new files have license header",
+      "enabled": false,
+      "severity": "warning",
+      "params": {
+        "header_pattern": "^# Copyright .* Tinkerflow"
+      }
+    },
+    {
+      "name": "commit_message_convention",
+      "description": "Check commit messages follow Conventional Commits",
+      "enabled": true,
+      "severity": "error",
+      "params": {
+        "allowed_types": ["feat", "fix", "docs", "style", "refactor", "test", "chore"]
+      }
+    }
+  ]
+}

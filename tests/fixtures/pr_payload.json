@@ -1,0 +1,18 @@
+tests/fixtures/pr_payload.json
+
+```json
+{
+  "action": "opened",
+  "number": 1,
+  "repository": {
+    "full_name": "test/repo"
+  },
+  "installation": {
+    "id": 12345
+  },
+  "sender": {
+    "login": "testuser"
+  }
+}
+```
+

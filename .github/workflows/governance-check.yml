@@ -5,6 +5,8 @@ on:
   workflow_dispatch:
 jobs:
   audit:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Check branch protections

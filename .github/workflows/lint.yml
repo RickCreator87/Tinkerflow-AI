@@ -1,0 +1,30 @@
+.github/workflows/lint.yml
+
+```yaml
+name: Lint
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          pip install flake8 black isort
+      - name: Check formatting with black
+        run: black --check app gateway tests
+      - name: Check imports with isort
+        run: isort --check-only app gateway tests
+      - name: Lint with flake8
+        run: flake8 app gateway tests --count --max-complexity=10 --statistics
+```

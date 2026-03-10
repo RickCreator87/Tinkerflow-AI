@@ -1,0 +1,6 @@
+{
+  "checks:write": ["create_check_run", "update_check_run"],
+  "contents:read": ["get_file_contents", "list_files"],
+  "pull_requests:write": ["post_comment", "update_pr"],
+  "metadata:read": ["get_repo_info", "list_installations"]
+}

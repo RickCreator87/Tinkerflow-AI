@@ -1,0 +1,5 @@
+# Events that trigger the app
+- pull_request
+- pull_request_review
+- check_run
+- check_suite
