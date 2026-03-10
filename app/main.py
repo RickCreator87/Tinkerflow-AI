@@ -157,7 +157,10 @@ async def chat_completions(
     # Parse request body
     try:
         request_data = await request.json()
-        logger.info(f"Chat completion request: {request_data}")
+        # Log a sanitized summary of the request instead of the full, user-controlled body
+        model_for_log = str(request_data.get("model", "unknown")).replace("\r", "").replace("\n", "")
+        messages_count = len(request_data.get("messages", [])) if isinstance(request_data.get("messages"), list) else 0
+        logger.info(f"Chat completion request - model={model_for_log}, messages={messages_count}")
     except Exception as e:
         logger.error(f"Failed to parse request JSON: {e}")
         raise HTTPException(status_code=400, detail="Invalid JSON payload")
@@ -183,13 +186,14 @@ async def chat_completions(
         return response
         
     except Exception as e:
-        # Log full error details server-side, including stack trace
+        # Log full exception details server-side, including stack trace,
+        # but do not expose them to the client.
         logger.exception("Chat completion failed")
         
-        # Return OpenAI-style error with a generic message to avoid leaking internals
+        # Return OpenAI-style error with a generic message
         error_response = {
             "error": {
-                "message": "An internal error occurred while processing the chat completion request.",
+                "message": "An internal error has occurred.",
                 "type": "api_error",
                 "code": 500
             }
