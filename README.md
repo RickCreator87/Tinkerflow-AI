@@ -5,16 +5,16 @@
 
 ### 🧱 Tinkerflow‑AI — App Authority
 
-![tinkerflow.identity.agent](https://img.shields.io/badge/tinkerflow.identity.agent-Registered%20Adaptive%20Agent-6f3ad3)
-![tinkerflow.autonomy.plan](https://img.shields.io/badge/tinkerflow.autonomy.plan-Multi--Step%20Planning%20Engine-3a8dde)
-![tinkerflow.workflow.orchestrator](https://img.shields.io/badge/tinkerflow.workflow.orchestrator-Workflow%20Orchestration%20Engine-2ea043)
-![tinkerflow.pysci.compute](https://img.shields.io/badge/tinkerflow.pysci.compute-Scientific%20Python%20Compute-ffb347)
-![tinkerflow.repo.auditready](https://img.shields.io/badge/tinkerflow.repo.auditready-Audit--Ready%20Repo-4c1)
-![tinkerflow.security.integrity](https://img.shields.io/badge/tinkerflow.security.integrity-Integrity--Checked%20Actions-e05d44)
+![tinkerflow.identity.agent(https://img.shields.io/badge/tinkerflow.identity.agent-Registered%20Adaptive%20Agent-6f3ad3)
+![tinkerflow.autonomy.plan(https://img.shields.io/badge/tinkerflow.autonomy.plan-Multi--Step%20Planning%20Engine-3a8dde)
+![tinkerflow.workflow.orchestrator(https://img.shields.io/badge/tinkerflow.workflow.orchestrator-Workflow%20Orchestration%20Engine-2ea043)
+![tinkerflow.pysci.compute(https://img.shields.io/badge/tinkerflow.pysci.compute-Scientific%20Python%20Compute-ffb347)
+![tinkerflow.repo.auditready(https://img.shields.io/badge/tinkerflow.repo.auditready-Audit--Ready%20Repo-4c1)
+![tinkerflow.security.integrity(https://img.shields.io/badge/tinkerflow.security.integrity-Integrity--Checked%20Actions-e05d44)
 
 https://www.buymeacoffee.com/rickcreator87
 
-![Buy Me a Coffee](https://www.buymeacoffee.com/rickcreator87)
+![Buy Me a Coffee(https://www.buymeacoffee.com/rickcreator87)
 
 
 ⚙️ 
@@ -26,12 +26,14 @@ buymea_coffee: rickcreator87
 custom: []
 `
 ### 🛡️ Governing Authority — GitDigital Badge Authority
+
 ![gda.authority.badge](https://img.shields.io/badge/gda.authority.badge-Primary%20Badge%20Authority-000000)
 ![gda.governance.schema](https://img.shields.io/badge/gda.governance.schema-Schema%20Compliance-0366d6)
 ![gda.security.signature](https://img.shields.io/badge/gda.security.signature-Signature--Verified-b60205)
 ![gda.ecosystem.githubapp](https://img.shields.io/badge/gda.ecosystem.githubapp-GitHub%20App%20Authority-8250df)
 
 https://img.shields.io/badge/Identity-RDK%20VERIFIED-orange?style=for-the-badge&logo=id.me&logoColor=white
+
 ![Identity](https://img.shields.io/badge/Identity-RDK%20VERIFIED-orange?style=for-the-badge&logo=id.me&logoColor=white)
 <!-- Tinkerflow‑AI Authority Badges -->
 
